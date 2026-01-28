@@ -21,9 +21,13 @@ Pour ce faire :
 1/ build le container avec les infos contenues dans `Dockerfile`. A noter qu'on charge uv directement dans le Dockerfile puis uv se charge de tout le reste.
 2/ On créé le container qui va utiliser le script ingest_data.py
 
+```
+docker build -t taxi_ingest:v001 .
+```
+
 ```bash
 docker run -it \
-  --network=pg-network \
+  --network=data_engineer_course_default \
   taxi_ingest:v001 \
     --pg-user=root \
     --pg-password=root \
@@ -32,5 +36,7 @@ docker run -it \
     --pg-db=ny_taxi \
     --target-table=yellow_taxi_trips
 ```
+
+Note : network = data_engineer_course_default si aucun nom donné par défaut.
 
 Voir https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/01-docker-terraform/docker-sql pour les codes.

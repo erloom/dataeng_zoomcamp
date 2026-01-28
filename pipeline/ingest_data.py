@@ -74,6 +74,26 @@ def main(pg_user, pg_password, pg_host, pg_port, pg_db, target_table):
 
         print("Inserted:", len(df_chunk))
 
+    # Autres chargements qu'on colle en brut
+    url_green_taxi = "https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2025-11.parquet"
+    url_taxi_zones = "https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_zone_lookup.csv"
+
+    df_green_taxi = pd.read_parquet(
+        url_green_taxi,
+    )
+    df_zones = pd.read_csv(url_taxi_zones)
+
+    df_green_taxi.to_sql(
+        name="green_taxi_trips",
+        con=engine,
+        if_exists="replace"
+    )
+    df_zones.to_sql(
+        name="taxi_zones",
+        con=engine,
+        if_exists="replace"
+    )
+    print('Green taxi trips and taxi zones data ingested.')
 
 if __name__ == "__main__":
     main()
