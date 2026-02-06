@@ -8,7 +8,7 @@
 --> check on kestra worklow
 file: "{{inputs.taxi}}_tripdata_{{inputs.year}}-{{inputs.month}}.csv"
 --> check all inputs
-answer : "greentripdata_2020-04.csv"
+answer : "green_tripdata_2020-04.csv"
 
 3/ How many rows are there for the Yellow Taxi data for all CSV files in the year 2020?
 
