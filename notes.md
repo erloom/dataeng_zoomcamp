@@ -27,7 +27,7 @@ docker build -t taxi_ingest:v001 .
 
 ```bash
 docker run -it \
-  --network=data_engineer_course_default \
+  --network=module2_default \
   taxi_ingest:v001 \
     --pg-user=root \
     --pg-password=root \
@@ -37,6 +37,9 @@ docker run -it \
     --target-table=yellow_taxi_trips
 ```
 
+
+
 Note : network = data_engineer_course_default si aucun nom donné par défaut.
+Pour module2 : module2_default (check docker network ls pour voir lequel est utilisé). Pro
 
 Voir https://github.com/DataTalksClub/data-engineering-zoomcamp/tree/main/01-docker-terraform/docker-sql pour les codes.
